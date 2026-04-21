@@ -1,4 +1,3 @@
-# The provided code does not contain any errors or issues that need fixing based on the given error message (which is empty). 
 # If there is a specific error or issue
 import pandas as pd
 from openai import AzureOpenAI
