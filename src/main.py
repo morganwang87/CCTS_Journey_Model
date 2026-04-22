@@ -10,6 +10,16 @@ import sys
 from pathlib import Path
 
 import pandas as pd
+# from openai import AzureOpenAI
+import subprocess
+
+# Install the openai package if not already installed
+try:
+    import openai
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "openai"])
+    import openai
+
 from openai import AzureOpenAI
 
 from report_generation import (
