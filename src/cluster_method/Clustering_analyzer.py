@@ -1,7 +1,7 @@
 """Main clustering analyzer that combines all clustering methods."""
 
 import logging
-from typing import Dict, Any, Optional, Literal
+from typing import Dict, Any, Optional, Literal, List
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
@@ -47,7 +47,6 @@ class ClusteringAnalyzer:
             'labels': labels,
             'embeddings_shape': embeddings.shape,
             **kmeans_metrics
-    
         }
 
     def apply_dbscan_clustering(
@@ -120,158 +119,61 @@ class ClusteringAnalyzer:
 
     def select_best_clustering_method(
         self,
-        embeddings: np.ndarray,
         kmeans_result: Dict[str, Any],
-        dbscan_result: Dict[str, Any]
+        dbscan_result: Dict[str, Any],
+        leiden_result: Dict[str, Any],
     ) -> Dict[str, Any]:
-        """
-        Compare KMeans and DBSCAN clustering results and return the most explainable method.
+        
+        methods: List[Dict[str, Any]] = [
+        {
+            "method": "kmeans",
+            "n_clusters": kmeans_result.get("n_clusters", 0),
+            "noise": 0,
+            "composite_score": kmeans_result.get("composite_score", 0),
+            "result": kmeans_result,
+        },
+        {
+            "method": "leiden",
+            "n_clusters": leiden_result.get("n_clusters", 0),
+            "noise": 0,
+            "composite_score": leiden_result.get("metrics", {}).get("composite_score", 0)
+            if "metrics" in leiden_result
+            else leiden_result.get("composite_score", 0),
+            "result": leiden_result,
+        },
+        {
+            "method": "dbscan",
+            "n_clusters": dbscan_result.get("n_clusters", 0),
+            "noise": dbscan_result.get("noise_percentage", 0),
+            "composite_score": dbscan_result.get("composite_score", 0),
+            "result": dbscan_result,
+        },
+        ]
 
-        Args:
-            embeddings: Input embeddings
-            kmeans_result: Result from KMeans clustering
-            dbscan_result: Result from DBSCAN clustering
+    # -----------------------------
+    # Apply eligibility rules
+    # -----------------------------
+        eligible_methods = [
+            m for m in methods
+            if m["n_clusters"] >= 3 and m["noise"] < 30
+        ]
 
-        Returns:
-            Dictionary with best method and metrics
-        """
-        kmeans_labels = kmeans_result['labels']
-        dbscan_labels = dbscan_result['labels']
-        noise_percentage = dbscan_result['noise_percentage']
-
-        # Remove noise points from DBSCAN for fair comparison
-        valid_dbscan_mask = dbscan_labels != -1
-        dbscan_labels_clean = dbscan_labels[valid_dbscan_mask]
-        embeddings_filtered = embeddings[valid_dbscan_mask]
-
-        # Get cluster counts
-        kmeans_n_clusters = kmeans_result['n_clusters']
-        dbscan_n_clusters = dbscan_result['n_clusters']
-
-        # Calculate metrics
-        has_valid_dbscan_silhouette = len(embeddings_filtered) > 1 and dbscan_n_clusters > 1
-
-        metrics = {}
-
-        # KMeans Metrics
-        kmeans_metrics = {}
-        kmeans_silhouette = silhouette_score(embeddings, kmeans_labels)
-        kmeans_silhouette_normalized = ((kmeans_silhouette + 1) / 2) * 100
-        kmeans_metrics['silhouette_score'] = kmeans_silhouette_normalized
-
-        kmeans_db_index = davies_bouldin_score(embeddings, kmeans_labels)
-        kmeans_metrics['davies_bouldin_normalized'] = 100 / (1 + kmeans_db_index)
-
-        kmeans_ch_index = calinski_harabasz_score(embeddings, kmeans_labels)
-        kmeans_metrics['calinski_harabasz_normalized'] = min(kmeans_ch_index / 10, 100)
-
-        kmeans_counts = np.bincount(kmeans_labels)
-        kmeans_balance = 100 - (np.std(kmeans_counts) / np.mean(kmeans_counts) * 100)
-        kmeans_balance = max(0, min(100, kmeans_balance))
-        kmeans_metrics['cluster_balance_score'] = kmeans_balance
-
-        kmeans_cluster_count_score = 100 - abs((kmeans_n_clusters - 5) * 10)
-        kmeans_cluster_count_score = max(0, min(100, kmeans_cluster_count_score))
-        kmeans_metrics['cluster_count_score'] = kmeans_cluster_count_score
-        kmeans_metrics['cluster_count'] = kmeans_n_clusters
-
-        kmeans_composite = (
-            kmeans_silhouette_normalized * 40 +
-            kmeans_metrics['davies_bouldin_normalized'] * 30 +
-            kmeans_metrics['calinski_harabasz_normalized'] * 30
-        ) / 100
-        kmeans_metrics['composite_score'] = kmeans_composite
-
-        # DBSCAN Metrics
-        dbscan_metrics = {}
-
-        try:
-            if has_valid_dbscan_silhouette:
-                dbscan_silhouette = silhouette_score(embeddings_filtered, dbscan_labels_clean)
-                dbscan_silhouette_normalized = ((dbscan_silhouette + 1) / 2) * 100
-                dbscan_metrics['silhouette_score'] = dbscan_silhouette_normalized
-            else:
-                dbscan_silhouette_normalized = 0
-                dbscan_metrics['silhouette_score'] = 0
-        except:
-            dbscan_silhouette_normalized = 0
-            dbscan_metrics['silhouette_score'] = 0
-
-        if has_valid_dbscan_silhouette:
-            try:
-                dbscan_db_index = davies_bouldin_score(embeddings_filtered, dbscan_labels_clean)
-                dbscan_metrics['davies_bouldin_normalized'] = 100 / (1 + dbscan_db_index)
-            except:
-                dbscan_metrics['davies_bouldin_normalized'] = 0
+        # -----------------------------
+        # Select best method
+        # -----------------------------
+        if eligible_methods:
+            best = max(eligible_methods, key=lambda m: m["composite_score"])
+            decision_rule = "ELIGIBLE_MAX_COMPOSITE_SCORE"
         else:
-            dbscan_metrics['davies_bouldin_normalized'] = 0
-
-        if has_valid_dbscan_silhouette:
-            try:
-                dbscan_ch_index = calinski_harabasz_score(embeddings_filtered, dbscan_labels_clean)
-                dbscan_metrics['calinski_harabasz_normalized'] = min(dbscan_ch_index / 10, 100)
-            except:
-                dbscan_metrics['calinski_harabasz_normalized'] = 0
-        else:
-            dbscan_metrics['calinski_harabasz_normalized'] = 0
-
-        if len(embeddings_filtered) > 0:
-            dbscan_counts = np.bincount(dbscan_labels_clean)
-            if len(dbscan_counts) > 1:
-                dbscan_balance = 100 - (np.std(dbscan_counts) / np.mean(dbscan_counts) * 100)
-                dbscan_balance = max(0, min(100, dbscan_balance))
-            else:
-                dbscan_balance = 0
-        else:
-            dbscan_balance = 0
-        dbscan_metrics['cluster_balance_score'] = dbscan_balance
-
-        dbscan_cluster_count_score = 100 - abs((dbscan_n_clusters - 5) * 10)
-        dbscan_cluster_count_score = max(0, min(100, dbscan_cluster_count_score))
-        dbscan_metrics['cluster_count_score'] = dbscan_cluster_count_score
-        dbscan_metrics['cluster_count'] = dbscan_n_clusters
-
-        noise_score = 100 - min(noise_percentage, 100)
-        dbscan_metrics['noise_percentage'] = noise_percentage
-        dbscan_metrics['noise_score'] = noise_score
-
-        silhouette_weight = 40 if has_valid_dbscan_silhouette else 10
-        dbscan_composite = (
-            (dbscan_metrics.get('silhouette_score', 0) * silhouette_weight) +
-            dbscan_metrics['davies_bouldin_normalized'] * 30 +
-            dbscan_metrics.get('calinski_harabasz_normalized', 50) * 30
-        ) / 100
-        dbscan_metrics['composite_score'] = min(dbscan_composite, 100)
-
-        metrics['kmeans'] = kmeans_metrics
-        metrics['dbscan'] = dbscan_metrics
-
-        # Decision rules
-        if noise_percentage >= 30:
-            best_method = 'kmeans'
-            explainability_score = 100
-            decision_rule = 'NOISE_THRESHOLD'
-        elif kmeans_n_clusters < 3:
-            best_method = 'dbscan'
-            explainability_score = 100
-            decision_rule = 'KMEANS_INSUFFICIENT_CLUSTERS'
-        elif dbscan_n_clusters < 3:
-            best_method = 'kmeans'
-            explainability_score = 100
-            decision_rule = 'DBSCAN_INSUFFICIENT_CLUSTERS'
-        elif not has_valid_dbscan_silhouette:
-            best_method = 'kmeans'
-            explainability_score = 100
-            decision_rule = 'DBSCAN_INSUFFICIENT_DATA'
-        else:
-            best_method = 'kmeans' if kmeans_metrics['composite_score'] >= dbscan_metrics['composite_score'] else 'dbscan'
-            explainability_score = max(kmeans_metrics['composite_score'], dbscan_metrics['composite_score'])
-            decision_rule = 'COMPOSITE_SCORE_COMPARISON'
+            best = max(methods, key=lambda m: m["composite_score"])
+            decision_rule = "FALLBACK_NO_METHOD_ELIGIBLE"
 
         return {
-            'best_method': best_method,
-            'explainability_score': round(explainability_score, 2),
-            'metrics': metrics,
-            'decision_rule': decision_rule,
-            'noise_percentage': noise_percentage
+            "best_method": best["method"],
+            "decision_rule": decision_rule,
+            "explainability_score": round(best["composite_score"], 2),
+            "n_clusters": best["n_clusters"],
+            "noise_percentage": best["noise"],
+            "metrics": best["result"].get("metrics", {}),
+            "raw_result": best["result"]
         }
