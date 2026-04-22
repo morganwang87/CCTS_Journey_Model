@@ -291,7 +291,7 @@ class InteractionAnalyzer:
             logger.warning("No results provided for summary report generation")
             return {"error": "No results provided"}
 
-        logger.info(f"Generating journey summary for file number {file_number}")
+        logger.info(f"Generating journey summary for case number {file_number}")
 
         journey_prompt = get_journey_analysis_prompt(results, file_number)
 

@@ -1,10 +1,3 @@
-"""Main entry point for Level Reports Generation analysis.
-
-This orchestrates the multi-step solution pipeline:
-Step 1: Report Generation (current)
-Step 2+: Additional analysis steps can be added here
-"""
-
 import logging
 import sys
 from pathlib import Path
@@ -14,12 +7,6 @@ import pandas as pd
 import subprocess
 
 # Install the openai package if not already installed
-try:
-    import openai
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "openai"])
-    import openai
-
 from openai import AzureOpenAI
 
 from report_generation import (
@@ -32,16 +19,17 @@ from report_generation import (
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("level_reports.log"),
-    ],
+    # handlers=[
+    #     logging.StreamHandler(),
+    #     logging.FileHandler("level_reports.log"),
+    # ],
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
 
 logger = logging.getLogger(__name__)
 
 
-def main():
+def levels_report_generation():
     """Main entry point for the analysis pipeline."""
     try:
         logger.info("=" * 80)
@@ -91,13 +79,13 @@ def main():
 
         for case_num, case_number in enumerate(cases, 1):
             try:
-                df_case = df_relevancy[df_relevancy["File Number"] == case_number].copy()
-                case_number = df_case.iloc[0]["Case Number"]
+                df_case = df_relevancy[df_relevancy["Case Number"] == case_number].copy()
+                file_number = df_case.iloc[0]["File Number"]
                 account_number = df_case.iloc[0]["attr_account_number"]
 
                 logger.info(
                     f"[{case_num}/{len(cases)}] Processing case {case_number} "
-                    f"({case_number}) for account {account_number}"
+                    f"({file_number}) for account {account_number}"
                 )
 
                 # Analyze interactions
@@ -151,4 +139,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    levels_report_generation()
+
+
+
