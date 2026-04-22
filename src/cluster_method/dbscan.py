@@ -76,6 +76,8 @@ class DBSCANClustering:
         dbscan_unique = np.unique(dbscan_labels_clean)
         dbscan_n_clusters = len(dbscan_unique)
         has_valid_dbscan_silhouette = len(embeddings_filtered) > 1 and dbscan_n_clusters > 1
+        noise_count = np.sum(labels == -1)
+        noise_percentage = (noise_count / len(labels)) * 100 if len(labels) > 0 else 0
         try:
             if has_valid_dbscan_silhouette:
                 dbscan_silhouette = silhouette_score(embeddings_filtered, dbscan_labels_clean)
