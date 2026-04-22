@@ -5,13 +5,13 @@ from typing import Dict, Any, List, Optional
 import numpy as np
 import pandas as pd
 
-from ..data_processing.data_processing import DataProcessor
-from ..data_processing.embeddings import EmbeddingProcessor
-from ..Visualization.visualization import ClusterVisualizer
+# from ..Visualization.visualization import ClusterVisualizer
 from .evaluation import ClusterEvaluator
 from .topic_analysis import TopicAnalyzer
-from ..cluster_method import ClusteringAnalyzer
-
+from cluster_method import ClusteringAnalyzer
+from data_processing.data_processing import DataProcessor
+from data_processing.embeddings import EmbeddingProcessor
+from Visualization.visualization import ClusterVisualizer
 logger = logging.getLogger(__name__)
 
 
