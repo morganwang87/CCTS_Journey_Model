@@ -5,8 +5,8 @@ from typing import Dict, Any, List, Optional
 import numpy as np
 import pandas as pd
 
-from .data_processing import DataProcessor
-from .embeddings import EmbeddingProcessor
+from ..data_processing.data_processing import DataProcessor
+from ..data_processing.embeddings import EmbeddingProcessor
 from ..Visualization.visualization import ClusterVisualizer
 from .evaluation import ClusterEvaluator
 from .topic_analysis import TopicAnalyzer
@@ -86,19 +86,23 @@ class ThemeAnalyzer:
         """
         if method == "auto":
             # Try different methods and select best
-            kmeans_result = self.cluster_analyzer.apply_kmeans_clustering(embeddings)
-            dbscan_result = self.cluster_analyzer.apply_dbscan_clustering(embeddings)
-
+            kmeans_result = self.cluster_analyzer.apply_kmeans_clustering(embeddings, auto_k = True)
+            dbscan_result = self.cluster_analyzer.apply_dbscan_clustering(embeddings,  min_cluster_size= 30, min_samples = 10, metric = 'euclidean')
+            leiden_result = self.cluster_analyzer.apply_leiden_clustering(embeddings, k= 30, resolution_parameter = 0.7,  metric = "cosine")
             selection = self.cluster_analyzer.select_best_clustering_method(
-                embeddings, kmeans_result, dbscan_result
+             kmeans_result, dbscan_result, leiden_result
             )
 
             if selection['best_method'] == 'kmeans':
                 return kmeans_result
-            else:
+            
+            elif selection['best_method'] == 'dbscan':
                 return dbscan_result
+            else: 
+                return leiden_result
+            
         elif method == "kmeans":
-            return self.cluster_analyzer.apply_kmeans_clustering(embeddings)
+            return self.cluster_analyzer.apply_kmeans_clustering(embeddings, auto_k = True )
         elif method == "dbscan":
             return self.cluster_analyzer.apply_dbscan_clustering(embeddings)
         elif method == "leiden":
