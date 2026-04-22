@@ -134,10 +134,10 @@ class KMeansClustering:
         kmeans_balance = max(0, min(100, kmeans_balance))
         kmeans_metrics['cluster_balance_score'] = kmeans_balance
 
-        kmeans_cluster_count_score = 100 - abs((kmeans_n_clusters - 5) * 10)
+        kmeans_cluster_count_score = 100 - abs((n_clusters - 5) * 10)
         kmeans_cluster_count_score = max(0, min(100, kmeans_cluster_count_score))
         kmeans_metrics['cluster_count_score'] = kmeans_cluster_count_score
-        kmeans_metrics['cluster_count'] = kmeans_n_clusters
+        kmeans_metrics['n_clusters'] = n_clusters
 
         kmeans_composite = (
             kmeans_silhouette_normalized * 40 +

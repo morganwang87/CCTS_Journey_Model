@@ -45,9 +45,9 @@ class ClusteringAnalyzer:
             'method': 'kmeans',
             'model': model,
             'labels': labels,
-            'n_clusters': n_clusters_used,
-            'embeddings_shape': embeddings.shape
-            
+            'embeddings_shape': embeddings.shape,
+            **kmeans_metrics
+    
         }
 
     def apply_dbscan_clustering(
