@@ -269,9 +269,18 @@ class ResolutionRecommendationAnalyzer:
         import os
         output_dir = os.path.join("./output", "resolution_recommendation_clustering_plots")
         
-        # Ensure parent directories exist first
-        # os.makedirs(os.path.join("./output", "resolution_recommendation_clustering_plots"), exist_ok=True)
-        os.makedirs(output_dir, exist_ok=True)
+        # Ensure output directory exists (handles both file and directory conflicts)
+        try:
+            os.makedirs(output_dir, exist_ok=True)
+        except NotADirectoryError:
+            # If a file with the same name exists, remove it first
+            if os.path.exists(output_dir) and not os.path.isdir(output_dir):
+                logger.warning(f"Removing conflicting file: {output_dir}")
+                os.remove(output_dir)
+                os.makedirs(output_dir, exist_ok=True)
+            else:
+                raise
+
         
         
         # Save plots
