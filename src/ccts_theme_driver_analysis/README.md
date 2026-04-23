@@ -11,7 +11,7 @@ The theme analysis pipeline processes complaint data through the following stage
 3. **Dimension Reduction** - Reduce embedding dimensions for efficiency
 4. **Clustering** - Group similar complaints using multiple algorithms
 5. **Topic Extraction** - Identify themes using LLM analysis
-6.  **Evaluation** - Assess quality of results
+6(option).  **Evaluation** - Assess quality of results
 
 ## Quick Start
 
@@ -47,7 +47,7 @@ print("Topics:", results['topics'])
 Handles extraction of complaint data from JSON files.
 
 ```python
-from theme_analysis import DataProcessor
+from data_processing import DataProcessor
 
 processor = DataProcessor()
 df = processor.process_case_journey_folder("/path/to/jsons")
@@ -57,7 +57,7 @@ df = processor.process_case_journey_folder("/path/to/jsons")
 Generates embeddings and applies dimension reduction.
 
 ```python
-from theme_analysis import EmbeddingProcessor
+from data_processing import EmbeddingProcessor
 
 embedder = EmbeddingProcessor(client)
 embeddings = embedder.get_embeddings_in_batches(texts)

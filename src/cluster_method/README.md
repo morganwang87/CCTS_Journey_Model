@@ -61,7 +61,6 @@ print(f"Best method: {selection['best_method']} with score {selection['explainab
 ```
 
 ## Dependencies
-
 - numpy
 - scikit-learn
 - matplotlib
@@ -80,10 +79,8 @@ pip install numpy scikit-learn matplotlib kneed hdbscan python-igraph leidenalg
 The `select_best_clustering_method` uses the following decision rules:
 
 1. **Noise Threshold**: If DBSCAN has ≥30% noise, prefer K-Means
-2. **Insufficient Clusters**: If K-Means produces <3 clusters, prefer DBSCAN
-3. **DBSCAN Insufficient Clusters**: If DBSCAN produces <3 clusters, prefer K-Means
-4. **Data Validity**: If DBSCAN has insufficient data for evaluation, prefer K-Means
-5. **Composite Score**: Compare overall quality metrics between methods
+2. **Insufficient Clusters**: Select method with n_cluster >= 3
+3. **Composite Score**: Compare overall quality metrics between methods
 
 Each method is evaluated on:
 - Silhouette Score
