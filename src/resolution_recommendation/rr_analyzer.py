@@ -267,7 +267,7 @@ class ResolutionRecommendationAnalyzer:
         # 6 Visualizing
         logger.info("Visualizing clustering results...")
         import os
-        output_dir = os.path.join("./resolution_analysis", "resolution_recommendation_clustering_plots")
+        output_dir = os.path.join("./output/resolution_analysis", "resolution_recommendation_clustering_plots")
         os.makedirs(output_dir, exist_ok=True)
         
         # Save plots
@@ -317,27 +317,5 @@ class ResolutionRecommendationAnalyzer:
 
 
 
-        # 7. Assemble Results
-        # results_df = df.copy()
-        # results_df["cluster_label"] = final_labels
-        
-        # # Merge topics
-        # topics_df = pd.DataFrame(topics)
-        # if not topics_df.empty:
-        #     topics_df["cluster_label"] = topics_df["label"].astype(int)
-        #     results_df = results_df.merge(
-        #         topics_df[["cluster_label", "topic", "description", "short_example"]], 
-        #         on="cluster_label", 
-        #         how="left"
-        #     )
-
-        # return {
-        #     "dataframe": results_df,
-        #     "topics": topics,
-        #     "clustering_method": clustering_result['method'],
-        #     "clustering_metrics": clustering_result.get('metrics', {}),
-        #     "embeddings": reduced_embeddings,
-        #     "labels": final_labels,
-        #     "reduction_info": reduction_info
-        # }
+  
 

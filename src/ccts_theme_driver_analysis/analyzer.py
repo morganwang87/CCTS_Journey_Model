@@ -241,7 +241,7 @@ class ThemeAnalyzer:
 
         logger.info("Visualizing clustering results...")
         import os
-        output_dir = os.path.join("./theme_analysis", "ccts_theme_clustering_plots")
+        output_dir = os.path.join("./output/theme_analysis", "ccts_theme_clustering_plots")
         os.makedirs(output_dir, exist_ok=True)
         
         # Save plots

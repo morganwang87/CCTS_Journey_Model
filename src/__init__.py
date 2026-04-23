@@ -8,7 +8,7 @@ Step 1: Report Generation
     Location: src/report_generation/
 
 Step 2:  CCTS complaint Theme Analysis
-
+Step 3:  CCTS resolution Recommendation
 """
 
 __version__ = "1.0"
