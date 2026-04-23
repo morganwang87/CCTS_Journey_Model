@@ -240,7 +240,7 @@ class ThemeAnalyzer:
 
         logger.info("Visualizing clustering results...")
         import os
-        output_dir = os.path.join(data_folder, "clustering_plots")
+        output_dir = os.path.join("./theme_analysis", "ccts_theme_clustering_plots")
         os.makedirs(output_dir, exist_ok=True)
         
         # Save plots
@@ -264,7 +264,7 @@ class ThemeAnalyzer:
                 plt.ylabel(f"{method_name} 2")
                 plt.legend()
                 plt.tight_layout()
-                plot_path = os.path.join(output_dir, f"clustering_{method_name.lower()}_{clustering_result.get('method', 'unknown')}.png")
+                plot_path = os.path.join(output_dir, f"ccts_theme_clustering_{method_name.lower()}_{clustering_result.get('method', 'unknown')}.png")
                 plt.savefig(plot_path, dpi=300, bbox_inches='tight')
                 plt.close()
                 logger.info(f"Saved {method_name} plot to {plot_path}")

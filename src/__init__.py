@@ -11,5 +11,5 @@ Step 2:  CCTS complaint Theme Analysis
 
 """
 
-__version__ = "2.0"
+__version__ = "1.0"
 __author__ = "Morgan Wang"
