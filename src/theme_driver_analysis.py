@@ -31,7 +31,7 @@ def load_theme_config() -> Dict[str, Any]:
         "yes",
     )
     norm = os.getenv("THEME_EMBEDDING_NORMALIZATION", "True")
-    output_path = os.getenv("THEME_OUTPUT_PATH", "./output")
+    output_path = os.getenv("THEME_OUTPUT_PATH", "./output/")
     
     # Clustering parameters
     clustering_params = {}

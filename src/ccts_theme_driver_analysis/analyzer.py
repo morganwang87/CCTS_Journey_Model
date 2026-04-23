@@ -238,6 +238,38 @@ class ThemeAnalyzer:
         logger.info("Performing clustering...")
         clustering_result = self.perform_clustering(embeddings, method=clustering_method, **clustering_params)
 
+        logger.info("Visualizing clustering results...")
+        import os
+        output_dir = os.path.join(data_folder, "clustering_plots")
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Save plots
+        import matplotlib.pyplot as plt
+        vis_result = self.visualize_clusters(embeddings, clustering_result['labels'])
+        
+        # Save each plot
+        for i, (method_name, df) in enumerate([("PCA", vis_result.get("df_pca")), ("t-SNE", vis_result.get("df_tsne")), ("UMAP", vis_result.get("df_umap"))]):
+            if df is not None:
+                plt.figure(figsize=(10, 7))
+                unique_labels = sorted(df['cluster'].unique())
+                colors = plt.cm.tab10(np.linspace(0, 1, len(unique_labels)))
+                for j, label in enumerate(unique_labels):
+                    mask = df['cluster'] == label
+                    plt.scatter(df.loc[mask, 'x'], df.loc[mask, 'y'], 
+                              c=[colors[j]], 
+                              label=f"Cluster {label}" if label != -1 else "Noise",
+                              alpha=0.7, s=40)
+                plt.title(f"Clustering Results ({method_name}) - {clustering_result.get('method', 'Unknown')}")
+                plt.xlabel(f"{method_name} 1")
+                plt.ylabel(f"{method_name} 2")
+                plt.legend()
+                plt.tight_layout()
+                plot_path = os.path.join(output_dir, f"clustering_{method_name.lower()}_{clustering_result.get('method', 'unknown')}.png")
+                plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+                plt.close()
+                logger.info(f"Saved {method_name} plot to {plot_path}")
+
+
         # 5. Extract topics
         logger.info("Extracting topics...")
         topic_result = self.extract_topics(embeddings, clustering_result['labels'], texts)
@@ -245,7 +277,7 @@ class ThemeAnalyzer:
         # 6. Evaluate results
         logger.info("visualization results...")
         evaluation = self.evaluate_clusters(embeddings, clustering_result['labels'])
-        self.visualize_clusters(embeddings, clustering_result['labels'])
+        # self.visualize_clusters(embeddings, clustering_result['labels'])
         return {
             'data': df,
             'texts': texts,
