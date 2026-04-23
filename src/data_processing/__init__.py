@@ -3,8 +3,10 @@
 
 from .data_processing import DataProcessor
 from .embeddings import EmbeddingProcessor
-
+from .utils import clean_json_string, safe_json_loads
 __all__ = [
     "DataProcessor",
-    "EmbeddingProcessor"
+    "EmbeddingProcessor",
+    "clean_json_string",
+     "safe_json_loads",
 ]

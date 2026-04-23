@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 import numpy as np
 import pandas as pd
 from scipy.spatial.distance import cdist
-
+from data_processing.utils import safe_json_loads
 logger = logging.getLogger(__name__)
 
 
@@ -190,5 +190,9 @@ class TopicAnalyzer:
             ],
             temperature=0.1
         )
+        response_text = response.choices[0].message.content
+        topics = safe_json_loads(response_text)
 
-        return response.choices[0].message.content
+        logger.info(f"Successfully extracted {len(topics)} topics")
+
+        return topics
