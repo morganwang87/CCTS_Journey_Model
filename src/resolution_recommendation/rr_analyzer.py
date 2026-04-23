@@ -34,7 +34,7 @@ class ResolutionRecommendationAnalyzer:
         
         # Initialize standardized processors
         self.embedding_processor = EmbeddingProcessor(azure_client)
-        self.clustering_analyzer = ClusteringAnalyzer()
+        self.cluster_analyzer = ClusteringAnalyzer()
         self.data_processor = DataProcessor()
         
         # Initialize specialized topic analyzer for Resolution Recommendations
@@ -267,8 +267,12 @@ class ResolutionRecommendationAnalyzer:
         # 6 Visualizing
         logger.info("Visualizing clustering results...")
         import os
-        output_dir = os.path.join("./output/resolution_analysis", "resolution_recommendation_clustering_plots")
+        output_dir = os.path.join("./output", "resolution_analysis", "resolution_recommendation_clustering_plots")
+        
+        # Ensure parent directories exist first
+        os.makedirs(os.path.join("./output", "resolution_analysis"), exist_ok=True)
         os.makedirs(output_dir, exist_ok=True)
+        
         
         # Save plots
         import matplotlib.pyplot as plt
