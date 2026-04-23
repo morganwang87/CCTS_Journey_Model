@@ -267,10 +267,10 @@ class ResolutionRecommendationAnalyzer:
         # 6 Visualizing
         logger.info("Visualizing clustering results...")
         import os
-        output_dir = os.path.join("./output", "resolution_analysis", "resolution_recommendation_clustering_plots")
+        output_dir = os.path.join("./output", "resolution_recommendation_clustering_plots")
         
         # Ensure parent directories exist first
-        os.makedirs(os.path.join("./output", "resolution_analysis"), exist_ok=True)
+        # os.makedirs(os.path.join("./output", "resolution_recommendation_clustering_plots"), exist_ok=True)
         os.makedirs(output_dir, exist_ok=True)
         
         

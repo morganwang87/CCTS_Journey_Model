@@ -244,10 +244,10 @@ class ThemeAnalyzer:
         output_dir = os.path.join("./output", "theme_analysis", "theme_clustering_plots")
         
         # Ensure parent directories exist first
-        os.makedirs(os.path.join("./output", "theme_analysis"), exist_ok=True)
-        os.makedirs(output_dir, exist_ok=True)
-        # output_dir = os.path.join("./output/theme_analysis", "ccts_theme_clustering_plots")
+        # os.makedirs(os.path.join("./output", "theme_clustering_plots"), exist_ok=True)
         # os.makedirs(output_dir, exist_ok=True)
+        output_dir = os.path.join("./output", "ccts_theme_clustering_plots")
+        os.makedirs(output_dir, exist_ok=True)
         
         # Save plots
         import matplotlib.pyplot as plt
