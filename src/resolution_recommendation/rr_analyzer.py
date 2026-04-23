@@ -10,7 +10,7 @@ from data_processing.embeddings import EmbeddingProcessor
 from cluster_method import ClusteringAnalyzer
 
 # Import local specialized components
-from .RR_topic_analysis import  RRTopicAnalyzer
+from .RR_topic_analysis import  RRtopicAnalyzer
 from .prompts import build_topic_extraction_prompt
 from data_processing.utils import safe_json_loads
 from Visualization.visualization import ClusterVisualizer
@@ -38,7 +38,7 @@ class ResolutionRecommendationAnalyzer:
         self.data_processor = DataProcessor()
         
         # Initialize specialized topic analyzer for Resolution Recommendations
-        self.topic_analyzer = RRTopicAnalyzer(client=azure_client, model=llm_model) 
+        self.topic_analyzer = RRtopicAnalyzer(client=azure_client, model=llm_model) 
         self.visualizer = ClusterVisualizer()
 
         logger.info("Resolution Recommendation Analyzer initialized with all components")

@@ -6,7 +6,7 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 from .prompts import build_topic_extraction_prompt, build_breakdown_topic_extraction_prompt
-from .utils import safe_json_loads
+from data_processing.utils import safe_json_loads
 
 logger = logging.getLogger(__name__)
 

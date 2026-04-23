@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 from openai import AzureOpenAI
-from resolution_recommendations import ResolutionRecommendationAnalyzer
+from resolution_recommendation import ResolutionRecommendationAnalyzer
 from report_generation import ConfigManager
 
 logging.basicConfig(
