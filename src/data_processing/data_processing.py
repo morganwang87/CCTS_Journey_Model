@@ -1,30 +1,47 @@
-"""Data processing utilities for theme analysis."""
+"""Data processing utilities for complaint journey analysis and text extraction."""
 
 import logging
 from pathlib import Path
-from typing import Dict, List, Any, Union
+from typing import Dict, List, Any, Union, Optional, Tuple
 import json
 import pandas as pd
 
 logger = logging.getLogger(__name__)
 
 
+class DataProcessingError(Exception):
+    """Custom exception for data processing errors."""
+    pass
+
+
 class DataProcessor:
-    """Handles data extraction and processing for complaint journey analysis."""
+    """
+    Handles data extraction and processing for complaint journey analysis.
+    
+    Provides robust methods for loading, parsing, and extracting structured
+    complaint data from JSON files and dictionaries.
+    """
 
     @staticmethod
     def safe_get(dct: Dict, *keys: str, default=None) -> Any:
         """
-        Safely navigate nested dictionaries.
+        Safely navigate nested dictionaries without raising KeyError.
 
         Args:
             dct: Dictionary to navigate
-            *keys: Keys to traverse
-            default: Default value if key not found
+            *keys: Keys to traverse in order
+            default: Default value if key path not found
 
         Returns:
-            Value at the nested key path or default
+            Value at the nested key path or default value
+
+        Raises:
+            TypeError: If dct is not a dictionary at any level
         """
+        if not isinstance(dct, dict):
+            logger.debug(f"Expected dict, got {type(dct).__name__}")
+            return default
+
         current = dct
         for key in keys:
             if not isinstance(current, dict):
@@ -33,6 +50,37 @@ class DataProcessor:
             if current is None:
                 return default
         return current
+
+    @staticmethod
+    def _load_json_file(file_path: Path) -> Dict:
+        """
+        Load and parse JSON file with comprehensive error handling.
+
+        Args:
+            file_path: Path to JSON file
+
+        Returns:
+            Parsed JSON as dictionary
+
+        Raises:
+            FileNotFoundError: If file does not exist
+            DataProcessingError: If file cannot be read or JSON is invalid
+        """
+        if not file_path.exists():
+            raise FileNotFoundError(f"File not found: {file_path}")
+
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return data
+        except json.JSONDecodeError as e:
+            error_msg = f"Invalid JSON in {file_path.name}: {str(e)}"
+            logger.error(error_msg)
+            raise DataProcessingError(error_msg) from e
+        except IOError as e:
+            error_msg = f"Cannot read file {file_path}: {str(e)}"
+            logger.error(error_msg)
+            raise DataProcessingError(error_msg) from e
 
     @staticmethod
     def extract_case_journey_analysis(data_or_file: Union[Dict, str, Path]) -> Dict[str, Any]:
@@ -55,12 +103,18 @@ class DataProcessor:
             # Load JSON if a file path is provided
             if isinstance(data_or_file, (str, Path)):
                 file_path = Path(data_or_file)
-                with open(file_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+                try:
+                    data = DataProcessor._load_json_file(file_path)
+                except DataProcessingError as e:
+                    logger.error(f"Failed to load {file_path.name}: {e}")
+                    return {}
                 file_name = file_path.name
-            else:
+            elif isinstance(data_or_file, dict):
                 data = data_or_file
                 file_name = None
+            else:
+                logger.error(f"Invalid input type: {type(data_or_file).__name__}. Expected dict, str, or Path.")
+                return {}
 
             ccts_journey = DataProcessor.safe_get(data, "ccts_complaint_journey_analysis", default={}) or {}
             customer_complaint_genesis = DataProcessor.safe_get(ccts_journey, "customer_complaint_genesis", default={}) or {}
@@ -79,9 +133,7 @@ class DataProcessor:
                 # File metadata
                 "file_name": file_name,
 
-                # -----------------------------
                 # ccts_complaint_journey_analysis
-                # -----------------------------
                 'case_number': ccts_journey.get("case_number"),
 
                 # customer_complaint_genesis
@@ -99,9 +151,7 @@ class DataProcessor:
                 "repeat_contact_pattern": journey_failure_points.get("repeat_contact_pattern"),
                 "final_straw_incident": journey_failure_points.get("final_straw_incident"),
 
-                # -----------------------------
                 # value_gap_analysis
-                # -----------------------------
                 "offer_vs_expectation_matrix": value_gap_analysis.get("offer_vs_expectation_matrix"),
 
                 # rationality_assessment
@@ -110,17 +160,12 @@ class DataProcessor:
                 "company_offer_adequacy": rationality_assessment.get("company_offer_adequacy"),
                 "company_offer_adequacy_justification": rationality_assessment.get("company_offer_adequacy_justification"),
 
-                # -----------------------------
                 # prevention_opportunity_analysis
-                # -----------------------------
                 "proactive_outreach": prevention_opportunity_analysis.get("proactive_outreach", []),
                 "compensation_timing": prevention_opportunity_analysis.get("compensation_timing", []),
                 "escalation_management": prevention_opportunity_analysis.get("escalation_management", []),
 
-                # -----------------------------
-                # resolution_recommendations
-                # -----------------------------
-                # root_cause_identification
+                # resolution_recommendations / root_cause_identification
                 "primary_root_cause": root_cause_identification.get("primary_root_cause"),
                 "contributing_factors": root_cause_identification.get("contributing_factors", []),
                 "systemic_vs_individual": root_cause_identification.get("systemic_vs_individual"),
@@ -130,9 +175,7 @@ class DataProcessor:
                 # strategic recommendations
                 "strategic_recommendations": resolution_recommendations.get("strategic_recommendations", []),
 
-                # -----------------------------
-                # Optional raw blocks for traceability
-                # -----------------------------
+                # Raw blocks for traceability
                 "ccts_complaint_journey_analysis_raw": ccts_journey,
                 "value_gap_analysis_raw": value_gap_analysis,
                 "prevention_opportunity_analysis_raw": prevention_opportunity_analysis,
@@ -142,7 +185,7 @@ class DataProcessor:
             return record
 
         except Exception as e:
-            logging.error(f"Error extracting case journey analysis: {e}")
+            logger.error(f"Unexpected error extracting case journey analysis: {e}", exc_info=True)
             return {}
 
     @staticmethod

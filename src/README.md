@@ -28,8 +28,9 @@ This is a comprehensive, multi-step solution for CCTS complaint analysis that co
 src/
 ├── __init__.py                    # Package marker
 ├── levels_report_generation.py    # Main entry point for report generation
+├── theme_driver_analysis.py       # Theme analysis driver script
 ├── requirements.txt               # Dependencies
-│
+| 
 ├── report_generation/             # 📋 Traditional Report Generation
 │   ├── __init__.py                # Package marker
 │   ├── analyzer.py                # Core analysis engine
@@ -46,12 +47,21 @@ src/
 │   ├── leiden.py                 # Graph-based Leiden clustering
 │   └── README.md                 # Detailed clustering docs
 │
-└── ccts_theme_driver_analysis/    # 🎯 Theme Analysis Pipeline
-    ├── __init__.py               # Package marker
-    ├── analyzer.py               # Main pipeline orchestrator
-    ├── evaluation.py             # Clustering quality metrics
-    ├── topic_analysis.py         # LLM-based theme extraction
-    └── README.md                 # Pipeline documentation
+|── ccts_theme_driver_analysis/    # 🎯 Theme Analysis Pipeline
+|    ├── __init__.py               # Package marker
+|    ├── analyzer.py               # Main pipeline orchestrator
+|    ├── evaluation.py             # Clustering quality metrics
+|    ├── topic_analysis.py         # LLM-based theme extraction
+|    └── README.md                 # Pipeline documentation
+|
+├── data_processing/               # 🧹 Data extraction and embedding preprocessing
+│   ├── __init__.py                # Package marker
+│   ├── data_processing.py         # Data extraction and cleaning
+│   ├── embeddings.py              # Embedding generation and helpers
+│
+└── Visualization/                 # 📊 Visualization Tools
+    ├── __init__.py                # Package maker
+    └── visualization.py           # Visualization helpers: PCA, UMAP, t-SNE
 ```
 
 ## 📁 Root Directory Files
@@ -60,9 +70,12 @@ src/
 |------|---------|-------|
 | `__init__.py` | Package marker | Enables Python package imports |
 | `levels_report_generation.py` | Main entry point for report generation | `python levels_report_generation.py` |
+| `theme_driver_analysis.py` | Theme analysis driver script | `python theme_driver_analysis.py` |
 | `main.ipynb` | Interactive Jupyter notebook | Development and testing environment |
 | `requirements.txt` | Python dependencies | `pip install -r requirements.txt` |
 | `README.md` | This documentation | Comprehensive project guide |
+| `output/` | Generated output artifacts | Stores report and analysis files |
+
 
 ### Key Entry Points
 
