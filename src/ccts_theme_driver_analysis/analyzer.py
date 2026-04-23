@@ -59,6 +59,9 @@ class ThemeAnalyzer:
             Embedding array
         """
         return self.embedding_processor.get_embeddings_in_batches(texts, batch_size=batch_size)
+    
+    def normalize_embeddings(self, embeddings: np.ndarray, norm: str = 'l2'):
+        return self.embedding_processor.normalize_embeddings(embeddings, norm)  
 
     def reduce_dimensions(self, embeddings: np.ndarray, method: str = "auto") -> tuple:
         """
@@ -73,7 +76,7 @@ class ThemeAnalyzer:
         """
         return self.embedding_processor.apply_dimension_reduction(embeddings, method=method)
 
-    def perform_clustering(self, embeddings: np.ndarray, method: str = "auto") -> Dict[str, Any]:
+    def perform_clustering(self, embeddings: np.ndarray, method: str = "auto", **clustering_params) -> Dict[str, Any]:
         """
         Perform clustering analysis.
 
@@ -102,11 +105,11 @@ class ThemeAnalyzer:
                 return leiden_result
             
         elif method == "kmeans":
-            return self.cluster_analyzer.apply_kmeans_clustering(embeddings, auto_k = True )
+            return self.cluster_analyzer.apply_kmeans_clustering(embeddings, **{k: v for k, v in clustering_params.items() if k in ['n_clusters', 'auto_k']})
         elif method == "dbscan":
-            return self.cluster_analyzer.apply_dbscan_clustering(embeddings)
+            return self.cluster_analyzer.apply_dbscan_clustering(embeddings, **{k: v for k, v in clustering_params.items() if k in ['min_cluster_size', 'min_samples', 'metric']})
         elif method == "leiden":
-            return self.cluster_analyzer.apply_leiden_clustering(embeddings)
+            return self.cluster_analyzer.apply_leiden_clustering(embeddings, **{k: v for k, v in clustering_params.items() if k in ['k', 'use_snn', 'resolution_parameter', 'metric', 'return_graph', 'random_state']})
         else:
             raise ValueError(f"Unknown clustering method: {method}")
 
@@ -187,7 +190,9 @@ class ThemeAnalyzer:
         data_folder: str,
         text_column: str = "primary_complaint_issue_clean",
         clustering_method: str = "auto",
-        reduce_dimensions: bool = True
+        reduce_dimensions: bool = True,
+        norm: bool = True,
+        **clustering_params
     ) -> Dict[str, Any]:
         """
         Run the complete theme analysis pipeline.
@@ -206,31 +211,41 @@ class ThemeAnalyzer:
         # 1. Process data
         logger.info("Processing complaint data...")
         df = self.process_complaint_data(data_folder)
-        texts = df[text_column].dropna().tolist()
-
+        issue_clean = df[text_column].str.split('[').str[0].str.strip()
+        texts = issue_clean.dropna().tolist()
+        # df['primary_complaint_issue'].str.split('[').str[0].str.strip()
         # 2. Generate embeddings
         logger.info("Generating embeddings...")
         embeddings = self.generate_embeddings(texts)
 
-        # 3. Optional dimension reduction
+        # 3. Optional dimension reduction and normalization
+        if norm:
+            logger.info("Embedding Normalization...")
+            embeddings = self.normalize_embeddings(embeddings)
         if reduce_dimensions:
             logger.info("Reducing dimensions...")
             embeddings, reduction_info = self.reduce_dimensions(embeddings)
         else:
             reduction_info = None
+        
+        # if norm:
+        #     logger.info("Embedding Normalization...")
+        #     embeddings = self.normalize_embeddings(embeddings)
+        
+
 
         # 4. Perform clustering
         logger.info("Performing clustering...")
-        clustering_result = self.perform_clustering(embeddings, method=clustering_method)
+        clustering_result = self.perform_clustering(embeddings, method=clustering_method, **clustering_params)
 
         # 5. Extract topics
         logger.info("Extracting topics...")
         topic_result = self.extract_topics(embeddings, clustering_result['labels'], texts)
 
         # 6. Evaluate results
-        logger.info("Evaluating results...")
+        logger.info("visualization results...")
         evaluation = self.evaluate_clusters(embeddings, clustering_result['labels'])
-
+        self.visualize_clusters(embeddings, clustering_result['labels'])
         return {
             'data': df,
             'texts': texts,

@@ -4,7 +4,6 @@
 
 This is a comprehensive, multi-step solution for CCTS complaint analysis that combines traditional report generation with advanced AI-powered theme analysis. The solution is organized into specialized modules under the `src/` directory, enabling modular development and seamless integration of analysis capabilities.
 
-## What's New in v3.0
 
 ### ✅ **Complete Modular Architecture**
 - **Clustering Methods**: Production-ready clustering framework with K-Means, DBSCAN, and Leiden algorithms
@@ -14,7 +13,7 @@ This is a comprehensive, multi-step solution for CCTS complaint analysis that co
 ### 🎯 **Key Improvements**
 - **Automatic Method Selection**: Intelligent clustering algorithm recommendation
 - **LLM-Powered Topic Extraction**: GPT-based theme identification and description
-- **Comprehensive Evaluation**: Multiple quality metrics and visualization options
+- **Comprehensive Clustering Evaluation**: Multiple quality metrics and visualization options
 - **Production-Ready Code**: Error handling, logging, and configuration management
 
 ### 📊 **Enhanced Capabilities**
@@ -28,34 +27,31 @@ This is a comprehensive, multi-step solution for CCTS complaint analysis that co
 ```
 src/
 ├── __init__.py                    # Package marker
-├── main.py                        # Main orchestrator (entry point)
+├── levels_report_generation.py    # Main entry point for report generation
 ├── requirements.txt               # Dependencies
 │
-├── report_generation/             # 📋 Step 1: Traditional Report Generation
-│   ├── __init__.py               # Package marker
-│   ├── analyzer.py               # Core analysis engine
-│   ├── config.py                 # Configuration management
-│   ├── utils.py                  # Utility functions
-│   ├── prompts.py                # AI prompt templates
-│   └── Level_reports_generation.py # Original script (reference)
+├── report_generation/             # 📋 Traditional Report Generation
+│   ├── __init__.py                # Package marker
+│   ├── analyzer.py                # Core analysis engine
+│   ├── config.py                  # Configuration management
+│   ├── utils.py                   # Utility functions
+│   ├── prompts.py                 # AI prompt templates
+│   └── README.md                  # Module documentation
 │
-├── cluster_method/               # 🔍 Core Clustering Algorithms
-│   ├── __init__.py              # Package marker
-│   ├── analyzer.py              # Unified clustering interface
-│   ├── kmeans.py                # K-Means with auto k-determination
-│   ├── dbscan.py                # DBSCAN/HDBSCAN implementation
-│   ├── leiden.py                # Graph-based Leiden clustering
-│   └── README.md                # Detailed clustering docs
+├── cluster_method/                # 🔍 Core Clustering Algorithms
+│   ├── __init__.py                # Package marker
+│   ├── Clustering_analyzer.py     # Unified clustering interface
+│   ├── kmeans.py                 # K-Means with auto k-determination
+│   ├── dbscan.py                 # DBSCAN/HDBSCAN implementation
+│   ├── leiden.py                 # Graph-based Leiden clustering
+│   └── README.md                 # Detailed clustering docs
 │
-└── theme_analysis/              # 🎯 Complete Theme Analysis Pipeline
-    ├── __init__.py              # Package marker
-    ├── analyzer.py              # Main pipeline orchestrator
-    ├── data_processing.py       # JSON data extraction & processing
-    ├── embeddings.py            # Embedding generation & reduction
-    ├── visualization.py         # Multi-projection plotting
-    ├── evaluation.py            # Clustering quality metrics
-    ├── topic_analysis.py        # LLM-based theme extraction
-    └── README.md                # Pipeline documentation
+└── ccts_theme_driver_analysis/    # 🎯 Theme Analysis Pipeline
+    ├── __init__.py               # Package marker
+    ├── analyzer.py               # Main pipeline orchestrator
+    ├── evaluation.py             # Clustering quality metrics
+    ├── topic_analysis.py         # LLM-based theme extraction
+    └── README.md                 # Pipeline documentation
 ```
 
 ## 📁 Root Directory Files
@@ -247,7 +243,7 @@ Complete end-to-end pipeline for automated complaint theme discovery and analysi
 ### Quick Start Example
 
 ```python
-from theme_analysis import ThemeAnalyzer
+from ccts_theme_driver_analysis import ThemeAnalyzer
 from openai import AzureOpenAI
 
 # Initialize OpenAI client
@@ -278,7 +274,7 @@ print(f"📈 Clustering quality: {results['evaluation']['silhouette']:.3f}")
 
 ```python
 # Individual component usage
-from theme_analysis import (
+from ccts_theme_driver_analysis import (
     DataProcessor, EmbeddingProcessor,
     ClusterVisualizer, TopicAnalyzer
 )
@@ -308,33 +304,6 @@ visualizer = ClusterVisualizer()
 plots = visualizer.cluster_visual(embeddings, clustering_result['labels'])
 ```
 
-## 🚀 Entry Points
-
-### Command Line Execution
-**`levels_report_generation.py`** - Main script for traditional report generation analysis
-
-```bash
-# From src/ directory
-python levels_report_generation.py
-```
-
-**Features:**
-- Processes customer interaction data from pickle files
-- Generates detailed interaction-by-interaction analysis
-- Creates journey summaries with root cause identification
-- Uses Azure OpenAI for intelligent analysis
-
-### Interactive Execution
-**`main.ipynb`** - Jupyter notebook for interactive analysis and development
-
-**Features:**
-- Step-by-step execution with visualization
-- Environment setup and validation
-- Interactive testing of individual components
-- Databricks-compatible execution
-
-### Modular Components
-All functionality is also available through individual module imports for custom workflows.
 
 ## 🧪 Testing Suite
 
@@ -361,47 +330,16 @@ python ../unit_test/test_clustering.py
 - Azure OpenAI access with API key
 - Customer interaction data in pickle format
 
-### Installation
 
-1. **Clone and navigate to project:**
-```bash
-cd CCTS_Journey_Model-main/src
-```
 
-2. **Install dependencies:**
-```bash
-pip install -r requirements.txt
-```
+### Notes and Known Issues
 
-3. **Configure environment:**
-```bash
-# Copy and edit .env file in project root
-cp ../.env.example ../.env
-# Edit .env with your Azure OpenAI credentials
-```
+- The actual theme analysis package in this repo is `ccts_theme_driver_analysis`.
+- `ccts_theme_driver_analysis/analyzer.py` defaults to `text_column="primary_complaint_issue_clean"`, but the data processor currently extracts `primary_complaint_issue`.
+- `report_generation/analyzer.py` sorts by `conversation_start` but does not include that field in the required column list, which may cause failures if the field is missing.
+- `levels_report_generation.py` imports `subprocess` but does not use it.
 
-### Quick Start
 
-#### Option 1: Command Line (Report Generation)
-```bash
-# Run traditional report generation
-python levels_report_generation.py
-```
-
-#### Option 2: Interactive (Jupyter Notebook)
-```bash
-# Open Jupyter notebook
-jupyter notebook main.ipynb
-# Or in VS Code: Ctrl+Shift+P → "Jupyter: Create New Jupyter Notebook"
-```
-
-#### Option 3: Modular Usage
-```python
-# Import and use individual modules
-from report_generation import InteractionAnalyzer
-from cluster_method import ClusteringAnalyzer
-from theme_analysis import ThemeAnalyzer
-```
 
 ### Configuration
 
@@ -441,7 +379,7 @@ Each step module is self-contained with:
 ### Import Pattern
 
 ```python
-# From main.py
+# From levels_report_generation.py
 from report_generation import (
     ConfigManager,
     InteractionAnalyzer,
@@ -463,7 +401,7 @@ To add Step 2 (or another step):
    - `config.py` - Configuration (if needed)
    - `utils.py` - Utilities
 
-3. Update `src/main.py` to orchestrate the new step
+3. Update `levels_report_generation.py` to orchestrate the new step
 
 Example:
 ```python
@@ -555,19 +493,7 @@ results = analyzer.analyze_all_interactions(test_df)
 - **Memory Usage** - Processes data in chunks
 - **Logging Overhead** - Can be adjusted via log levels
 
-## Troubleshooting
 
-### Configuration Issues
-```bash
-# Check environment variables are loaded
-python -c "from report_generation import ConfigManager; ConfigManager.load_azure_config()"
-```
-
-### Import Issues
-```bash
-# Ensure src/ is in PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-```
 
 ### API Connection
 ```bash
@@ -575,40 +501,10 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 python -c "from openai import AzureOpenAI; ..."
 ```
 
-## Future Enhancements
-
-- [ ] Parallelization of case processing
-- [ ] Caching layer for API responses
-- [ ] Database backend for results
-- [ ] CLI arguments for step filtering
-- [ ] Web dashboard for results
-- [ ] Scheduled automation
-- [ ] Performance metrics/monitoring
-
-## Contributing New Steps
-
-When adding a new analysis step:
-
-1. **Follow naming convention**: `step_n_description/`
-2. **Use consistent structure**: config, utils, main logic
-3. **Add __init__.py**: Export public API
-4. **Include logging**: All major operations
-5. **Document outputs**: Data structures and formats
-6. **Write docstrings**: All public functions
-7. **Add type hints**: For IDE support
-
-## Support
-
-For issues:
-1. Check `level_reports.log` for detailed errors
-2. Review step-specific README
-3. Verify configuration in `.env`
-4. Check Azure OpenAI service status
-
 ---
 
 **Version**: 1.0  
 **Status**: Production-Ready with Complete Modular Architecture  
 **Documentation**: Comprehensive coverage of all src/ components  
-**Last Updated**: January 2024
+**Last Updated**: April 2026
 

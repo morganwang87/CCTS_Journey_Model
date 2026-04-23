@@ -7,8 +7,8 @@ Step 1: Report Generation
     agent evaluation, and journey mapping.
     Location: src/report_generation/
 
-Step 2+: Additional analysis steps to be added
-    Future steps for deeper analysis and insights.
+Step 2:  CCTS complaint Theme Analysis
+
 """
 
 __version__ = "2.0"
