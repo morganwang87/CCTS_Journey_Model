@@ -190,9 +190,9 @@ class TopicAnalyzer:
             ],
             temperature=0.1
         )
-        response_text = response.choices[0].message.content
-        topics = safe_json_loads(response_text)
+        # response_text = response.choices[0].message.content
+        # topics = safe_json_loads(response_text)
 
-        logger.info(f"Successfully extracted {len(topics)} topics")
+        # logger.info(f"Successfully extracted {len(topics)} topics")
 
-        return topics
+        return response.choices[0].message.content

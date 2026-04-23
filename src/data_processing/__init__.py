@@ -8,5 +8,5 @@ __all__ = [
     "DataProcessor",
     "EmbeddingProcessor",
     "clean_json_string",
-     "safe_json_loads",
+    "safe_json_loads",
 ]

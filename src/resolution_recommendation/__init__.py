@@ -5,10 +5,10 @@ recommendations to identify actionable improvement themes.
 """
 
 from .rr_analyzer import ResolutionRecommendationAnalyzer
-from .RRtopic_analysis 
+from .RR_topic_analysis import RRtopicAnalyzer
 __all__ = [
     "ResolutionRecommendationAnalyzer",
-
+    "RRtopicAnalyzer"
 ]
 
 __version__ = "1.0.0"

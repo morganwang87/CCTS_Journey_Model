@@ -148,11 +148,11 @@ class RRtopicAnalyzer:
                 temperature=temperature
             )
 
-            response_text = response.choices[0].message.content
-            topics = safe_json_loads(response_text)
+            # response_text = response.choices[0].message.content
+            # topics = safe_json_loads(response_text)
 
-            logger.info(f"Successfully extracted {len(topics)} topics")
-            return topics
+            # logger.info(f"Successfully extracted {len(topics)} topics")
+            return response.choices[0].message.content
 
         except Exception as e:
             logger.error(f"Error calling LLM for topic extraction: {e}")
@@ -222,11 +222,11 @@ class RRtopicAnalyzer:
                 temperature=temperature
             )
 
-            response_text = response.choices[0].message.content
-            topics = safe_json_loads(response_text)
+            # response_text = response.choices[0].message.content
+            # topics = safe_json_loads(response_text)
 
-            logger.info(f"Successfully extracted {len(topics)} sub-themes")
-            return topics
+            logger.info(f"Successfully extracted sub-themes")
+            return response.choices[0].message.content
 
         except Exception as e:
             logger.error(f"Error calling LLM for sub-theme extraction: {e}")

@@ -180,7 +180,8 @@ class ThemeAnalyzer:
         try:
             # Try to parse as JSON
             import json
-            return json.loads(response)
+            from data_processing.utils import safe_json_loads
+            return safe_json_loads(response)
         except json.JSONDecodeError:
             logger.error(f"Failed to parse topic response as JSON: {response}")
             return []

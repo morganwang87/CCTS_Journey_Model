@@ -7,16 +7,16 @@
     "n_clusters": 12,
     "n_noise": 0,
     "noise_ratio": 0.0,
-    "silhouette": 0.037593829613819456,
-    "calinski_harabasz": 42.30835598803389,
-    "davies_bouldin": 3.041248843120135,
+    "silhouette": 0.03824941676091623,
+    "calinski_harabasz": 42.51988181325536,
+    "davies_bouldin": 3.0339358905474554,
     "valid_for_metric": true
   },
   "topics": {
     "cluster_payloads": [
       {
         "label": 0,
-        "cluster_size": 322,
+        "cluster_size": 321,
         "representative_points": [
           "The core issue was a billing discrepancy where the customer was charged $547 instead of the expected discounted rates for internet and mobile services.",
           "The core issue was a billing discrepancy after the customer attempted to revert to their previous internet plan, resulting in a higher charge than expected.",
@@ -27,72 +27,72 @@
           "The core issue was a billing discrepancy where the customer signed up for a $35 monthly plan, but the bill showed $80 due to discounts not being applied.",
           "The core issue was a billing discrepancy where the customer was charged more than the promised amount and credits were not applied.",
           "The core issue was the customer's expectation of a $80 activation fee waiver, which was not applied, leading to a billing dispute.",
-          "The core issue was a billing discrepancy where the customer was charged $105 instead of the agreed $95 monthly service fee.",
           "The core issue was a billing discrepancy where the customer was promised a monthly rate of $65 but was charged $88.",
+          "The core issue was a billing discrepancy where the customer was charged $105 instead of the agreed $95 monthly service fee.",
           "The core issue was a billing discrepancy after a device upgrade, where the customer expected a lower monthly bill based on online information, but the actual charges were higher.",
           "The core issue was a billing discrepancy where the customer was promised a monthly service fee of $98 but was billed $143.57.",
           "The core issue was a billing dispute over early cancellation fees during a trial period that the customer believed was free.",
           "The core issue was a billing dispute where the customer was charged $86 after cancelling the service within the trial period, despite being assured no charges would apply."
         ],
         "distances_to_centroid": [
-          0.033345418164048235,
-          0.03485481225274978,
-          0.03517470042552928,
-          0.035268571271553695,
-          0.03673957285647533,
-          0.037068943173857116,
-          0.03785876643550157,
-          0.038203082973012115,
-          0.03825086577176484,
-          0.03849958479055793,
-          0.03859697498365,
-          0.04001244682129068,
-          0.04048341976272374,
-          0.04068615865372249,
-          0.040781929753726076
+          0.03335216677792496,
+          0.03483643397666747,
+          0.03518965106454219,
+          0.03525973486977796,
+          0.036740928919226756,
+          0.03732386435915491,
+          0.03775763472552962,
+          0.0381200796404324,
+          0.03833096803197955,
+          0.03862709273562048,
+          0.038635030341554244,
+          0.03992676759993763,
+          0.04057284104630554,
+          0.0409502309485138,
+          0.041042858564469875
         ]
       },
       {
         "label": 1,
-        "cluster_size": 269,
+        "cluster_size": 255,
         "representative_points": [
-          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised a $15 monthly rate but was charged significantly more, leading to repeated unresolved contacts and frustration.",
           "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised an $88 monthly bill but was charged higher due to a missing $10 discount.",
-          "The core issue prompting the CCTS complaint was the customer's bill increase due to an unexpected $70 activation fee and loss of promised discounts, which were not resolved despite multiple contacts.",
+          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised a $15 monthly rate but was charged significantly more, leading to repeated unresolved contacts and frustration.",
           "The core issue prompting the CCTS complaint was a billing discrepancy where the customer was charged $55 instead of the promised $50 plan with a $10 discount.",
-          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was charged more than the agreed rates for their lines and devices, leading to increased charges over time.",
           "The core issue prompting the CCTS complaint was a billing discrepancy where the customer was quoted a $28 plan but was billed $40, leading to a higher monthly charge than expected.",
+          "The core issue prompting the CCTS complaint was the customer's bill increase due to an unexpected $70 activation fee and loss of promised discounts, which were not resolved despite multiple contacts.",
+          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was charged more than the agreed rates for their lines and devices, leading to increased charges over time.",
           "The core issue prompting the CCTS complaint was a billing discrepancy where the customer was charged more than the agreed amount of $116 plus tax, due to an automatic payment discount not being applied and a rate increase not communicated effectively.",
           "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was charged more than the agreed $93 monthly rate and incurred unexpected setup fees.",
+          "The core issue prompting the CCTS complaint was billing discrepancies, specifically unexpected charges including a $80 setup fee and charges not matching the promised plan.",
           "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was charged $79 instead of the agreed $50 monthly rate, and an unexplained $3000 charge was applied to their bill.",
           "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was charged $47 instead of the promised $32, with discounts not applied as expected.",
-          "The core issue prompting the CCTS complaint was billing discrepancies, specifically unexpected charges including a $80 setup fee and charges not matching the promised plan.",
           "The core issue prompting the CCTS complaint was a billing discrepancy related to unexpected charges and rate increases on the customer's plan.",
           "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer agreed to a $115 plan but received a bill for $329. This was compounded by miscommunication about plan details and unexpected charges.",
-          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised a $38 monthly charge but was billed $48 instead.",
-          "The core issue prompting the CCTS complaint was a billing discrepancy where the customer was charged more than expected after reactivating their lines, with additional fees and lost discounts contributing to the confusion."
+          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised a $2 monthly cost for a new device but was charged more, along with an unauthorized plan change.",
+          "The core issue that prompted the CCTS complaint was a billing discrepancy where the customer was promised a $38 monthly charge but was billed $48 instead."
         ],
         "distances_to_centroid": [
-          0.019031159045019952,
-          0.019240163245455633,
-          0.02211419175540963,
-          0.022373339892272415,
-          0.022395840465790906,
-          0.022489590863800757,
-          0.023023702513470967,
-          0.02331073151973373,
-          0.023444373778744976,
-          0.023528507287089773,
-          0.023679199983995813,
-          0.0238948285276388,
-          0.024531070602992644,
-          0.024680737467806857,
-          0.025023508151649554
+          0.01902628230030967,
+          0.01909103924493505,
+          0.021844695899391642,
+          0.022016022831820803,
+          0.02220787172489025,
+          0.022270134563085686,
+          0.0232653151072596,
+          0.023305109041956484,
+          0.023376904878111726,
+          0.023469881170888107,
+          0.023517083216903267,
+          0.02386776222276099,
+          0.02426957828382148,
+          0.024637768661944892,
+          0.024639163286467092
         ]
       },
       {
         "label": 2,
-        "cluster_size": 162,
+        "cluster_size": 174,
         "representative_points": [
           "The core issue prompting the CCTS complaint was the continued billing after the customer had cancelled their service, along with the refusal to refund the charges.",
           "The core issue prompting the CCTS complaint was the customer's continued billing after requesting service cancellation, which was not processed correctly.",
@@ -102,30 +102,30 @@
           "The core issue that prompted the CCTS complaint was the customer's repeated attempts to cancel their account, which were not processed, leading to continued billing despite service suspension.",
           "The core issue that prompted the CCTS complaint was the failure to process the cancellation of the customer's internet service, leading to continued billing despite multiple requests to cancel and return equipment.",
           "The core issue that prompted the CCTS complaint was the customer's inability to cancel their service due to long wait times and procedural barriers, leading to frustration and a billing dispute.",
-          "The core issue prompting the CCTS complaint was the continued billing after the customer requested cancellation of their internet service.",
           "The core issue prompting the CCTS complaint was the customer's request to cancel their service and return a device, which was not processed correctly, leading to continued billing.",
-          "The core issue prompting the CCTS complaint was the cancellation of the customer's phone order without notice, after being assured of its availability, leading to unmet expectations and billing concerns.",
+          "The core issue prompting the CCTS complaint was the continued billing after the customer requested cancellation of their internet service.",
           "The core issue prompting the CCTS complaint was the customer's repeated requests for service cancellation that were not processed due to technical errors and pending orders, resulting in continued billing.",
+          "The core issue prompting the CCTS complaint was the cancellation of the customer's phone order without notice, after being assured of its availability, leading to unmet expectations and billing concerns.",
           "The core issue prompting the CCTS complaint was the failure to process a service cancellation request made in July 2025, resulting in continued billing despite the customer's relocation and payment.",
           "The core issue prompting the CCTS complaint was the continued billing of the customer despite returning devices and expecting service cancellation.",
-          "The core issue prompting the CCTS complaint was the failure to cancel the customer's service as requested in May 2025, leading to continued billing and charges."
+          "The core issue prompting the CCTS complaint was the failure to cancel services as requested, leading to ongoing billing and penalty charges."
         ],
         "distances_to_centroid": [
-          0.0182292656014148,
-          0.0183221394513704,
-          0.02017444531502466,
-          0.020389132402744092,
-          0.021351230877507787,
-          0.02152523102754489,
-          0.02163510693996884,
-          0.022210264045716133,
-          0.022732989753670996,
-          0.023193817278129747,
-          0.025021744348223796,
-          0.025131305382020352,
-          0.02549805733632926,
-          0.02568740017229354,
-          0.0259036612705128
+          0.018044491672530083,
+          0.01830691845051924,
+          0.020365252378988785,
+          0.020769278807595493,
+          0.02181178504967296,
+          0.021821725880502796,
+          0.02208374431448712,
+          0.02287438689334087,
+          0.023284445390661324,
+          0.023302210969683657,
+          0.025299740141717986,
+          0.02552692737225226,
+          0.025714409977673713,
+          0.02612568562221662,
+          0.02619852164999148
         ]
       },
       {
@@ -149,26 +149,26 @@
           "The core issue that prompted the CCTS complaint was the cancellation of the customer's iPhone 15 CPO device order without notice, leading to frustration due to lack of communication and stock availability issues."
         ],
         "distances_to_centroid": [
-          0.024181949977316708,
-          0.024189772312143143,
-          0.02524344644520715,
-          0.026310685134625533,
-          0.027063693488183937,
-          0.02816539821058628,
-          0.02853392912738073,
-          0.02869642399316108,
-          0.02889863063664222,
-          0.029578450429879832,
-          0.03079225681243436,
-          0.031446538050243555,
-          0.03195009057151976,
-          0.032007488124501604,
-          0.03204058666202336
+          0.024181338747857217,
+          0.024190214349835037,
+          0.025241681031373586,
+          0.02631011260351146,
+          0.027063996363827503,
+          0.028167573722400086,
+          0.028533002925775652,
+          0.028698244505663828,
+          0.028901467507350564,
+          0.029580276700524544,
+          0.030806151065712717,
+          0.0314479440164529,
+          0.03195074070670456,
+          0.032009051411025724,
+          0.03214548684721297
         ]
       },
       {
         "label": 4,
-        "cluster_size": 111,
+        "cluster_size": 113,
         "representative_points": [
           "The core issue was the customer's dispute over the early cancellation fee (ECF) charged after moving out of the service area, which Rogers refused to waive.",
           "The core issue was the customer being entered into a new contract without their knowledge or approval, and Rogers' refusal to waive the early cancellation fee.",
@@ -178,30 +178,30 @@
           "The core issue was the customer's request to cancel their service within the buyer's remorse period due to lack of coverage, which was denied by Rogers, leading to a billing dispute over a $300 fee.",
           "The core issue was the customer's cancellation of their Rogers Satellite service during the trial period, which was not processed correctly, leading to continued charges.",
           "The core issue was a billing dispute related to charges after porting out services and confusion over account cancellation. The customer was unable to reach Rogers to resolve these issues, leading to frustration and escalation.",
-          "The core issue was the customer's inability to port their number to Rogers while being charged without consent, leading to a billing dispute.",
           "The core issue was the misinformation provided by a representative about service availability at the customer's new address and the absence of cancellation charges, which led to a billing dispute when Rogers later claimed service was available and billed an Early Cancellation Fee (ECF).",
+          "The core issue was the customer's inability to port their number to Rogers while being charged without consent, leading to a billing dispute.",
           "The core issue was the customer's belief that they could cancel their service without penalty if moving to a non-service area, which was contradicted by Rogers' policy requiring an Early Cancellation Fee (ECF).",
           "The core issue was the incorrect plan activation and Rogers not honoring the quoted promotional pricing, leading to billing discrepancies and customer dissatisfaction.",
+          "The core issue was the customer's dispute over a contract they believed they did not agree to, resulting in a $180 early cancellation fee after changing providers.",
           "The core issue was a billing discrepancy where the customer was billed $163 instead of the agreed $118, with additional charges for services not subscribed through Rogers.",
-          "The core issue was unauthorized long distance charges of $386 that the customer claimed they did not make, and Rogers' refusal to credit these charges.",
-          "The core issue was the customer's request to reduce their plan cost, which Rogers was unable to fulfill, leading to dissatisfaction."
+          "The core issue was unauthorized long distance charges of $386 that the customer claimed they did not make, and Rogers' refusal to credit these charges."
         ],
         "distances_to_centroid": [
-          0.034539532573232945,
-          0.038086735488745416,
-          0.03855923893070423,
-          0.0386299151118914,
-          0.03986355170606126,
-          0.04064144462576447,
-          0.043770821743425836,
-          0.04520947562893951,
-          0.04536207649994073,
-          0.04542892985996172,
-          0.045947985378057776,
-          0.046775040993812245,
-          0.04774008753086434,
-          0.048928083977272774,
-          0.04921482351474071
+          0.03445750609751297,
+          0.03782326870577757,
+          0.03857579237292774,
+          0.03865856904796061,
+          0.03978139889952359,
+          0.04023557546001533,
+          0.04364015235623442,
+          0.04540611896632474,
+          0.04548244714041216,
+          0.04577101340780565,
+          0.04577229896330348,
+          0.04700671968040815,
+          0.04727682506933828,
+          0.047764755191034514,
+          0.04912106447653297
         ]
       },
       {
@@ -225,26 +225,26 @@
           "The core issue that prompted the CCTS complaint was the erroneous charge for a device activated by a scammer impersonating Rogers, which Rogers failed to resolve satisfactorily."
         ],
         "distances_to_centroid": [
-          0.026008401792355307,
-          0.026254760489461737,
-          0.026532683390389833,
-          0.027874499105358552,
-          0.028645525097060087,
-          0.03016183219813995,
-          0.031033307204860527,
-          0.03105907282628273,
-          0.031796852775881734,
-          0.03196604200570885,
-          0.03199038042599245,
-          0.032056884339353275,
-          0.032288980164872694,
-          0.032438369409681256,
-          0.03270640961324223
+          0.026009079863089646,
+          0.026256201496613785,
+          0.02653244484292039,
+          0.027954597333893272,
+          0.028646353205107777,
+          0.03016249610379207,
+          0.031034001874194805,
+          0.031058609731035247,
+          0.03179819115564042,
+          0.031967912811112886,
+          0.031989154037625034,
+          0.032058204679581315,
+          0.03217555408453143,
+          0.03243796932222753,
+          0.03270597397127262
         ]
       },
       {
         "label": 6,
-        "cluster_size": 96,
+        "cluster_size": 98,
         "representative_points": [
           "The core issue that prompted the CCTS complaint was the customer's dispute over a $380 bill that included roaming charges they claim not to have incurred.",
           "The core issue that prompted the CCTS complaint was an overcharge of $450 related to roaming and long-distance charges, which the customer disputed as incorrect and unexpected.",
@@ -263,21 +263,21 @@
           "The core issue prompting the CCTS complaint was the customer's repeated experience of being charged more than expected, specifically related to roaming charges and a rate increase without clear notification."
         ],
         "distances_to_centroid": [
-          0.017095102378011928,
-          0.018744457329785025,
-          0.018761368214581298,
-          0.019826995963386884,
-          0.019968110604078104,
-          0.020425948733961086,
-          0.020553737611174183,
-          0.020597864000177935,
-          0.021205772763228103,
-          0.021458638181768963,
-          0.02150117335206103,
-          0.022090379160836116,
-          0.022810822732304947,
-          0.02341288726585211,
-          0.023667777139981472
+          0.0170420368435118,
+          0.018613361461137012,
+          0.018898539064062136,
+          0.01992631668142597,
+          0.02002810625666318,
+          0.02046837641186028,
+          0.020531927847434073,
+          0.020563207505217895,
+          0.02118671175079556,
+          0.02154084152575153,
+          0.021753848072513793,
+          0.02205331519116438,
+          0.022716422829351157,
+          0.023508679735084526,
+          0.023738057165266224
         ]
       },
       {
@@ -301,21 +301,21 @@
           "The core issue prompting the CCTS complaint was the unexpected billing increase from $55 to $60, which the customer believed violated their fixed pricing agreement for two years."
         ],
         "distances_to_centroid": [
-          0.019753609712603204,
-          0.01988066352183049,
-          0.01989177358192118,
-          0.021063191429796846,
-          0.02128556234239909,
-          0.021557156040156844,
-          0.021684017175869763,
-          0.021972225146696278,
-          0.022086132430809924,
-          0.022109832479840996,
-          0.022328888632493826,
-          0.022417218471881384,
-          0.022437440138001863,
-          0.023198385867294946,
-          0.024270953009729257
+          0.019754586343168734,
+          0.01988047805038151,
+          0.020017791053665746,
+          0.021063235303585337,
+          0.02128636301695208,
+          0.02155670886846539,
+          0.02168430091522755,
+          0.021996069760352177,
+          0.022086822403168282,
+          0.02210869417986394,
+          0.022330818627214977,
+          0.022416432057169478,
+          0.022437783555748547,
+          0.023198055531973072,
+          0.024257838007013977
         ]
       },
       {
@@ -339,21 +339,21 @@
           "The core issue was a billing error related to a 3G Administrative Charge of $84, despite the customer's line being suspended and the SIM removed."
         ],
         "distances_to_centroid": [
-          0.034070986745818876,
-          0.03568864268382699,
-          0.03680660049679918,
-          0.03690590536141747,
-          0.038600522744753785,
-          0.03945733570839505,
-          0.040006028074958344,
-          0.04043246209192208,
-          0.04090446804630077,
-          0.04105498219816428,
-          0.04108180827646346,
-          0.041582879175825815,
-          0.04417177490236923,
-          0.04437090610538019,
-          0.04446641168690946
+          0.034068715406862515,
+          0.03568900841056266,
+          0.036807572795878984,
+          0.03690690039961364,
+          0.03854629968659096,
+          0.0394585175169857,
+          0.04005626237348359,
+          0.04044082776524638,
+          0.040924227043242944,
+          0.04102918512023013,
+          0.04108150973127178,
+          0.04157992611503636,
+          0.04417269085597186,
+          0.04437391671345048,
+          0.04446451447441735
         ]
       },
       {
@@ -377,26 +377,26 @@
           "The core issue that prompted the CCTS complaint was a billing dispute related to a save and return fee and device repayment fee despite the customer returning the device."
         ],
         "distances_to_centroid": [
-          0.01587562927327668,
-          0.016939725316802212,
-          0.01709322873093433,
-          0.01767641626800953,
-          0.01887028470316643,
-          0.019151087122245447,
-          0.019750089584273045,
-          0.01999968812359043,
-          0.020536291599707268,
-          0.021318488065947938,
-          0.021877427707137187,
-          0.022100689710507382,
-          0.02214366727848016,
-          0.022343111552363015,
-          0.023095343244304845
+          0.01587264839014413,
+          0.016934231379368447,
+          0.017092058982822733,
+          0.017673757334196183,
+          0.018867302415673137,
+          0.01915117080626283,
+          0.019734010306606153,
+          0.019996135290595518,
+          0.02053440410260321,
+          0.021324013126453045,
+          0.021874036813490316,
+          0.022098187258661417,
+          0.022144250918699204,
+          0.022343008270846343,
+          0.0231668050932049
         ]
       },
       {
         "label": 10,
-        "cluster_size": 68,
+        "cluster_size": 67,
         "representative_points": [
           "The core issue prompting the CCTS complaint was the customer's internet service being frequently interrupted or having very slow speeds, which were not resolved despite multiple technician visits.",
           "The core issue prompting the CCTS complaint was the customer's intermittent internet service issues persisting for over five years without resolution, despite multiple technician visits and escalations.",
@@ -411,25 +411,25 @@
           "The core issue prompting the CCTS complaint was ongoing internet and TV connection issues despite equipment swaps and unresolved service failures.",
           "The core issue prompting the CCTS complaint was intermittent ongoing service issues with cable and internet that were only temporarily fixed after service calls, leading to repeated customer frustration and time spent with support.",
           "The core issue prompting the CCTS complaint was persistent internet connectivity issues and blocked access to certain sites, compounded by perceived inadequate technical support and service interruptions.",
-          "The core issue prompting the CCTS complaint was ongoing low internet speeds despite service upgrades and unresolved billing discrepancies.",
-          "The core issue prompting the CCTS complaint was intermittent internet connectivity that persisted despite multiple technician visits."
+          "The core issue prompting the CCTS complaint was intermittent internet connectivity that persisted despite multiple technician visits.",
+          "The core issue prompting the CCTS complaint was ongoing low internet speeds despite service upgrades and unresolved billing discrepancies."
         ],
         "distances_to_centroid": [
-          0.020558153016570824,
-          0.020617523070439736,
-          0.02168742023776038,
-          0.02296877825338406,
-          0.024052689889771384,
-          0.02427178295619159,
-          0.02431400797345773,
-          0.02523683385857811,
-          0.025784308809658985,
-          0.026224561054635886,
-          0.026486285583703473,
-          0.026499201629089808,
-          0.028055662864729602,
-          0.028781359352176628,
-          0.02902730405055165
+          0.020171474546449075,
+          0.02029894886584327,
+          0.021282443145440588,
+          0.02268106708993145,
+          0.023867187220011243,
+          0.023911431483489953,
+          0.02393665603642936,
+          0.02496390295794315,
+          0.025612402362394926,
+          0.025928914326552865,
+          0.026078193893051327,
+          0.026096940874197228,
+          0.027600193318458976,
+          0.028609249117543256,
+          0.028638623031978727
         ]
       },
       {
@@ -443,7 +443,92 @@
         ]
       }
     ],
-    "raw_response": "```json\n[\n    {\n        \"label\": 0,\n        \"topic\": \"Billing Discrepancies Due to Unapplied Discounts\",\n        \"description\": \"Customers frequently encounter billing discrepancies where promised discounts are not applied, leading to higher charges than expected. This issue requires improved accuracy in billing systems and better communication of discount applications.\",\n        \"reason\": \"Unapplied discounts lead to customer dissatisfaction and increased contact rates as customers seek resolution. Ensuring accurate billing is crucial for maintaining trust and reducing operational costs associated with handling disputes.\",\n        \"short_example\": \"A customer was charged $80 instead of the promised $35 monthly plan due to discounts not being applied.\"\n    },\n    {\n        \"label\": 1,\n        \"topic\": \"Unresolved Billing Discrepancies and Repeated Contacts\",\n        \"description\": \"Customers face unresolved billing discrepancies despite multiple contacts, often due to missing discounts or unexpected charges. This necessitates a streamlined resolution process and proactive communication.\",\n        \"reason\": \"Repeated unresolved billing issues increase customer frustration and operational costs due to repeated contacts. Efficient resolution processes are essential to enhance customer satisfaction and reduce churn.\",\n        \"short_example\": \"A customer was promised a $15 monthly rate but was charged significantly more, leading to repeated unresolved contacts.\"\n    },\n    {\n        \"label\": 2,\n        \"topic\": \"Continued Billing After Service Cancellation Requests\",\n        \"description\": \"Customers experience continued billing after requesting service cancellations, often due to processing failures. This requires improved cancellation procedures and system updates to prevent billing errors.\",\n        \"reason\": \"Failure to process cancellations correctly leads to billing disputes and customer dissatisfaction. Streamlining cancellation processes is vital to prevent unnecessary charges and maintain customer trust.\",\n        \"short_example\": \"A customer continued to be billed after requesting service cancellation, which was not processed correctly.\"\n    },\n    {\n        \"label\": 3,\n        \"topic\": \"Device Order Cancellations and Billing Issues\",\n        \"description\": \"Customers face unexpected cancellations of device orders without proper notification, often accompanied by billing for higher plans. This requires better inventory management and communication.\",\n        \"reason\": \"Order cancellations without notice disrupt customer expectations and lead to billing disputes. Effective communication and inventory management are crucial to prevent such issues and maintain customer satisfaction.\",\n        \"short_example\": \"A customer's iPhone 16 Pro Max order was cancelled without notice, and they were billed for a higher plan.\"\n    },\n    {\n        \"label\": 4,\n        \"topic\": \"Early Cancellation Fees and Contract Disputes\",\n        \"description\": \"Customers dispute early cancellation fees, often due to misunderstandings about contract terms or service availability. Clear communication of contract terms and cancellation policies is needed.\",\n        \"reason\": \"Misunderstandings about cancellation fees lead to billing disputes and customer dissatisfaction. Transparent communication of contract terms is essential to prevent disputes and enhance customer trust.\",\n        \"short_example\": \"A customer was charged an early cancellation fee after moving out of the service area, which they believed should be waived.\"\n    },\n    {\n        \"label\": 5,\n        \"topic\": \"Unresolved Billing Errors and Service Disputes\",\n        \"description\": \"Customers encounter unresolved billing errors, such as incorrect charges and uncredited payments, leading to service disputes. Improved billing accuracy and resolution processes are needed.\",\n        \"reason\": \"Unresolved billing errors increase customer frustration and operational costs due to repeated contacts. Accurate billing and efficient resolution processes are crucial for customer satisfaction.\",\n        \"short_example\": \"A customer faced a billing error involving overcharges related to discounts and activation fees, which were not resolved satisfactorily.\"\n    },\n    {\n        \"label\": 6,\n        \"topic\": \"Incorrect Roaming Charges and Billing Disputes\",\n        \"description\": \"Customers dispute incorrect roaming charges, often due to plan misunderstandings or billing errors. Clear communication of roaming policies and accurate billing are needed.\",\n        \"reason\": \"Incorrect roaming charges lead to billing disputes and customer dissatisfaction. Clear communication and accurate billing are essential to prevent disputes and maintain customer trust.\",\n        \"short_example\": \"A customer was billed for roaming charges despite having a plan that should cover them.\"\n    },\n    {\n        \"label\": 7,\n        \"topic\": \"Unexpected Rate Increases Without Notification\",\n        \"description\": \"Customers experience unexpected rate increases without prior notification, leading to billing disputes. Transparent communication of rate changes is needed to prevent dissatisfaction.\",\n        \"reason\": \"Unexpected rate increases without notification lead to customer dissatisfaction and increased contact rates. Transparent communication of rate changes is essential to maintain trust and reduce disputes.\",\n        \"short_example\": \"A customer faced a $5 rate increase without prior notice, leading to dissatisfaction.\"\n    },\n    {\n        \"label\": 8,\n        \"topic\": \"3G Network Retirement Charges and Roaming Disputes\",\n        \"description\": \"Customers dispute charges related to the 3G network retirement and roaming, often due to miscommunication. Clear communication of network changes and accurate billing are needed.\",\n        \"reason\": \"Miscommunication about network changes and roaming charges leads to billing disputes and customer dissatisfaction. Clear communication and accurate billing are essential to prevent disputes.\",\n        \"short_example\": \"A customer disputed a $75 charge related to the 3G network retirement, claiming it was not communicated effectively.\"\n    },\n    {\n        \"label\": 9,\n        \"topic\": \"Unreturned Equipment Charges and Billing Errors\",\n        \"description\": \"Customers face billing errors related to unreturned equipment charges, often due to processing failures. Improved return processes and accurate billing are needed.\",\n        \"reason\": \"Billing errors related to unreturned equipment lead to disputes and customer dissatisfaction. Efficient return processes and accurate billing are crucial to prevent disputes.\",\n        \"short_example\": \"A customer was charged for unreturned equipment despite having returned it.\"\n    },\n    {\n        \"label\": 10,\n        \"topic\": \"Persistent Internet Service Interruptions\",\n        \"description\": \"Customers experience persistent internet service interruptions despite multiple technician visits, leading to dissatisfaction. Improved service reliability and support are needed.\",\n        \"reason\": \"Persistent service interruptions lead to customer dissatisfaction and increased contact rates. Reliable service and effective support are essential to maintain customer satisfaction.\",\n        \"short_example\": \"A customer faced frequent internet service interruptions despite multiple technician visits.\"\n    },\n    {\n        \"label\": 11,\n        \"topic\": \"Incomplete Service Installation and Resulting Costs\",\n        \"description\": \"A customer incurred additional costs due to incomplete service installation, which was not rectified promptly. Improved installation processes and timely resolutions are needed.\",\n        \"reason\": \"Incomplete installations lead to additional costs and customer dissatisfaction. Efficient installation processes and prompt resolutions are crucial to prevent such issues.\",\n        \"short_example\": \"A customer needed to spend $622 on a locksmith due to incomplete service installation by Rogers.\"\n    }\n]\n```",
-    "topics": []
+    "raw_response": "```json\n[\n    {\n        \"label\": 0,\n        \"topic\": \"Billing Discrepancies in Promised Rates\",\n        \"description\": \"Customers frequently experience billing discrepancies where the charged amount does not match the promised rates for services or devices. This issue often involves unfulfilled discounts or credits, leading to unexpected higher charges.\",\n        \"reason\": \"Accurate billing is crucial for maintaining customer trust and satisfaction. Discrepancies can lead to repeated contacts, frustration, and potential loss of customers.\",\n        \"short_example\": \"A customer was charged $547 instead of the expected discounted rates for internet and mobile services.\"\n    },\n    {\n        \"label\": 1,\n        \"topic\": \"Unresolved Billing Discrepancies and Missing Discounts\",\n        \"description\": \"Customers face unresolved billing discrepancies where promised discounts are not applied, resulting in higher charges than expected. This leads to repeated contacts and unresolved frustration.\",\n        \"reason\": \"Ensuring discounts are applied correctly is essential for customer satisfaction and retention. Failure to resolve these discrepancies can damage customer relationships and increase churn.\",\n        \"short_example\": \"A customer was promised an $88 monthly bill but was charged higher due to a missing $10 discount.\"\n    },\n    {\n        \"label\": 2,\n        \"topic\": \"Failure to Process Service Cancellations\",\n        \"description\": \"Customers experience continued billing after requesting service cancellations, often due to procedural errors or delays in processing. This leads to frustration and disputes over charges.\",\n        \"reason\": \"Efficient processing of cancellations is vital to prevent unnecessary charges and maintain customer trust. Failure to do so can result in escalated complaints and reputational damage.\",\n        \"short_example\": \"A customer continued to be billed after requesting service cancellation, which was not processed correctly.\"\n    },\n    {\n        \"label\": 3,\n        \"topic\": \"Device Order Cancellations and Delays\",\n        \"description\": \"Customers face cancellations or delays in receiving ordered devices, often without proper notification or resolution. This is compounded by billing issues related to plan changes.\",\n        \"reason\": \"Timely fulfillment of device orders is crucial for customer satisfaction. Delays or cancellations without notice can lead to frustration and loss of trust.\",\n        \"short_example\": \"A customer's order for an iPhone 16 Pro Max was cancelled without notice, leading to frustration.\"\n    },\n    {\n        \"label\": 4,\n        \"topic\": \"Early Cancellation Fees and Contract Disputes\",\n        \"description\": \"Customers dispute early cancellation fees and contract terms, often due to misinformation or unexpected charges when moving out of service areas.\",\n        \"reason\": \"Clear communication of contract terms and cancellation policies is essential to avoid disputes and maintain customer satisfaction. Misunderstandings can lead to billing disputes and loss of trust.\",\n        \"short_example\": \"A customer was charged an early cancellation fee after moving out of the service area, which Rogers refused to waive.\"\n    },\n    {\n        \"label\": 5,\n        \"topic\": \"Unresolved Billing Errors and Service Disputes\",\n        \"description\": \"Customers encounter unresolved billing errors, including overcharges and uncredited payments, leading to service suspensions and dissatisfaction.\",\n        \"reason\": \"Resolving billing errors promptly is crucial to prevent service disruptions and maintain customer loyalty. Unresolved issues can lead to escalated complaints and negative customer experiences.\",\n        \"short_example\": \"A customer was charged for services during a period they were not using the service, and Rogers refused to waive these fees.\"\n    },\n    {\n        \"label\": 6,\n        \"topic\": \"Incorrect Roaming Charges\",\n        \"description\": \"Customers dispute roaming charges that they claim were incorrectly applied, often despite having plans that should cover these charges or taking preventive measures.\",\n        \"reason\": \"Accurate billing for roaming is essential to prevent unexpected charges and maintain customer satisfaction. Incorrect charges can lead to disputes and loss of trust.\",\n        \"short_example\": \"A customer was billed for roaming charges despite having a plan that should cover them.\"\n    },\n    {\n        \"label\": 7,\n        \"topic\": \"Unexpected Rate Increases Without Notification\",\n        \"description\": \"Customers experience unexpected rate increases without prior notification, leading to dissatisfaction and a sense of unfair treatment.\",\n        \"reason\": \"Transparent communication about rate changes is crucial to maintain customer trust and satisfaction. Unannounced increases can lead to disputes and customer churn.\",\n        \"short_example\": \"A customer's bill increased from $32.50 to $37.75 without adequate notification.\"\n    },\n    {\n        \"label\": 8,\n        \"topic\": \"Disputed Roaming and 3G Charges\",\n        \"description\": \"Customers dispute roaming charges and 3G administrative fees that they believe were incorrectly applied, often without prior notice or explanation.\",\n        \"reason\": \"Clear communication and accurate billing for roaming and network charges are essential to prevent disputes and maintain customer satisfaction.\",\n        \"short_example\": \"A customer disputed a $75 charge related to the 3G network retirement, claiming it was not communicated effectively.\"\n    },\n    {\n        \"label\": 9,\n        \"topic\": \"Charges for Unreturned Equipment\",\n        \"description\": \"Customers face billing errors related to charges for unreturned equipment, despite having returned the items or never receiving them.\",\n        \"reason\": \"Efficient processing and tracking of equipment returns are crucial to prevent incorrect charges and maintain customer trust.\",\n        \"short_example\": \"A customer was charged for unreturned equipment despite having returned it.\"\n    },\n    {\n        \"label\": 10,\n        \"topic\": \"Persistent Internet Service Interruptions\",\n        \"description\": \"Customers experience frequent internet service interruptions or slow speeds, which are not resolved despite multiple technician visits and escalations.\",\n        \"reason\": \"Reliable internet service is essential for customer satisfaction and retention. Persistent issues can lead to frustration and loss of business.\",\n        \"short_example\": \"A customer's internet service was frequently interrupted, which was not resolved despite multiple technician visits.\"\n    },\n    {\n        \"label\": 11,\n        \"topic\": \"Incomplete Service Installation\",\n        \"description\": \"A customer faced additional costs due to incomplete service installation, which was not rectified in a timely manner.\",\n        \"reason\": \"Ensuring complete and timely service installation is crucial to prevent additional costs and maintain customer satisfaction.\",\n        \"short_example\": \"A customer needed to spend $622 on a locksmith due to incomplete service installation by Rogers.\"\n    }\n]\n```",
+    "topics": [
+      {
+        "label": 0,
+        "topic": "Billing Discrepancies in Promised Rates",
+        "description": "Customers frequently experience billing discrepancies where the charged amount does not match the promised rates for services or devices. This issue often involves unfulfilled discounts or credits, leading to unexpected higher charges.",
+        "reason": "Accurate billing is crucial for maintaining customer trust and satisfaction. Discrepancies can lead to repeated contacts, frustration, and potential loss of customers.",
+        "short_example": "A customer was charged $547 instead of the expected discounted rates for internet and mobile services."
+      },
+      {
+        "label": 1,
+        "topic": "Unresolved Billing Discrepancies and Missing Discounts",
+        "description": "Customers face unresolved billing discrepancies where promised discounts are not applied, resulting in higher charges than expected. This leads to repeated contacts and unresolved frustration.",
+        "reason": "Ensuring discounts are applied correctly is essential for customer satisfaction and retention. Failure to resolve these discrepancies can damage customer relationships and increase churn.",
+        "short_example": "A customer was promised an $88 monthly bill but was charged higher due to a missing $10 discount."
+      },
+      {
+        "label": 2,
+        "topic": "Failure to Process Service Cancellations",
+        "description": "Customers experience continued billing after requesting service cancellations, often due to procedural errors or delays in processing. This leads to frustration and disputes over charges.",
+        "reason": "Efficient processing of cancellations is vital to prevent unnecessary charges and maintain customer trust. Failure to do so can result in escalated complaints and reputational damage.",
+        "short_example": "A customer continued to be billed after requesting service cancellation, which was not processed correctly."
+      },
+      {
+        "label": 3,
+        "topic": "Device Order Cancellations and Delays",
+        "description": "Customers face cancellations or delays in receiving ordered devices, often without proper notification or resolution. This is compounded by billing issues related to plan changes.",
+        "reason": "Timely fulfillment of device orders is crucial for customer satisfaction. Delays or cancellations without notice can lead to frustration and loss of trust.",
+        "short_example": "A customer's order for an iPhone 16 Pro Max was cancelled without notice, leading to frustration."
+      },
+      {
+        "label": 4,
+        "topic": "Early Cancellation Fees and Contract Disputes",
+        "description": "Customers dispute early cancellation fees and contract terms, often due to misinformation or unexpected charges when moving out of service areas.",
+        "reason": "Clear communication of contract terms and cancellation policies is essential to avoid disputes and maintain customer satisfaction. Misunderstandings can lead to billing disputes and loss of trust.",
+        "short_example": "A customer was charged an early cancellation fee after moving out of the service area, which Rogers refused to waive."
+      },
+      {
+        "label": 5,
+        "topic": "Unresolved Billing Errors and Service Disputes",
+        "description": "Customers encounter unresolved billing errors, including overcharges and uncredited payments, leading to service suspensions and dissatisfaction.",
+        "reason": "Resolving billing errors promptly is crucial to prevent service disruptions and maintain customer loyalty. Unresolved issues can lead to escalated complaints and negative customer experiences.",
+        "short_example": "A customer was charged for services during a period they were not using the service, and Rogers refused to waive these fees."
+      },
+      {
+        "label": 6,
+        "topic": "Incorrect Roaming Charges",
+        "description": "Customers dispute roaming charges that they claim were incorrectly applied, often despite having plans that should cover these charges or taking preventive measures.",
+        "reason": "Accurate billing for roaming is essential to prevent unexpected charges and maintain customer satisfaction. Incorrect charges can lead to disputes and loss of trust.",
+        "short_example": "A customer was billed for roaming charges despite having a plan that should cover them."
+      },
+      {
+        "label": 7,
+        "topic": "Unexpected Rate Increases Without Notification",
+        "description": "Customers experience unexpected rate increases without prior notification, leading to dissatisfaction and a sense of unfair treatment.",
+        "reason": "Transparent communication about rate changes is crucial to maintain customer trust and satisfaction. Unannounced increases can lead to disputes and customer churn.",
+        "short_example": "A customer's bill increased from $32.50 to $37.75 without adequate notification."
+      },
+      {
+        "label": 8,
+        "topic": "Disputed Roaming and 3G Charges",
+        "description": "Customers dispute roaming charges and 3G administrative fees that they believe were incorrectly applied, often without prior notice or explanation.",
+        "reason": "Clear communication and accurate billing for roaming and network charges are essential to prevent disputes and maintain customer satisfaction.",
+        "short_example": "A customer disputed a $75 charge related to the 3G network retirement, claiming it was not communicated effectively."
+      },
+      {
+        "label": 9,
+        "topic": "Charges for Unreturned Equipment",
+        "description": "Customers face billing errors related to charges for unreturned equipment, despite having returned the items or never receiving them.",
+        "reason": "Efficient processing and tracking of equipment returns are crucial to prevent incorrect charges and maintain customer trust.",
+        "short_example": "A customer was charged for unreturned equipment despite having returned it."
+      },
+      {
+        "label": 10,
+        "topic": "Persistent Internet Service Interruptions",
+        "description": "Customers experience frequent internet service interruptions or slow speeds, which are not resolved despite multiple technician visits and escalations.",
+        "reason": "Reliable internet service is essential for customer satisfaction and retention. Persistent issues can lead to frustration and loss of business.",
+        "short_example": "A customer's internet service was frequently interrupted, which was not resolved despite multiple technician visits."
+      },
+      {
+        "label": 11,
+        "topic": "Incomplete Service Installation",
+        "description": "A customer faced additional costs due to incomplete service installation, which was not rectified in a timely manner.",
+        "reason": "Ensuring complete and timely service installation is crucial to prevent additional costs and maintain customer satisfaction.",
+        "short_example": "A customer needed to spend $622 on a locksmith due to incomplete service installation by Rogers."
+      }
+    ]
   }
 }
